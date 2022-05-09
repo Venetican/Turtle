@@ -1,0 +1,23 @@
+Kombinované datasety
+https://www.kaggle.com/datasets/smaranjitghose/sea-turtle-face-detection -> 2000 želv (x)
+https://www.kaggle.com/datasets/antoreepjana/animals-detection-images-dataset -> domluvený dataset (y)
+
+Příprava dat
+odstranění všech želv složek z (y)
+odstranění všech label popisků ze složek
+
+cd do cílové složky (y)
+rm -r */label
+
+přesun vše do jedné složky pod class rest pro test data z (y)
+$ mv */*.jpg  ~/desktop/grinding/data_projekt/data/model_A_transform/test/rest
+
+přesun vše do jedné složky pod class rest pro train data z (y)
+mv */*.jpg ~/desktop/grinding/data_projekt/data/model_A_transform/train/rest
+
+Rozdělení 
+z (x) rozdělit v množství 1-411 do test pod class turtle
+z (x) rozdělit v množství 412-2000 do train pod class turtle
+
+
+
