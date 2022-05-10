@@ -5,6 +5,8 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D, MaxPooling2D
 from tensorflow.keras.layers import Activation, Dropout, Flatten, Dense
 from tensorflow.keras import backend as K
+import h5py
+from tensorflow.keras.models import load_model
 
 """
 transformace obrázků, kterými disponuje náš dataset 
@@ -122,6 +124,13 @@ uložení modelu
 """
 model.save_weights('C:/Users/Danie/Desktop/Grinding/data_projekt/ModelA/final.h5')
 
+model.save('C:/Users/Danie/Desktop/Grinding/data_projekt/ModelA/final_2.h5')
+
+"""
+načtení modelu
+"""
+loaded_model = load_model('C:/Users/Danie/Desktop/Grinding/data_projekt/ModelA/final_2.h5')
+
 """
 test modelu
 """
@@ -134,7 +143,7 @@ def prepare(img_path):
 
 model.predict(prepare('C:/Users/Danie/Desktop/sea-turtle-swimming-ocean-260nw-1932466181.jpg'))
 
-if model.predict(prepare('C:/Users/Danie/Desktop/jan-meeus-7LsuYqkvIUM-unsplash-scaled.jpg')) > 0.7:
+if loaded_model.predict(prepare('C:/Users/Danie/Desktop/sea-turtle-swimming-ocean-260nw-1932466181.jpg')) > 0.7:
     print("it is a turtle")
 else:
     print("it is not a turtle")
