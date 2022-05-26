@@ -20,7 +20,8 @@ from tensorflow.keras.models import load_model
 load modelu
 """
 
-loaded_model = load_model('C:/Users/Danie/Desktop/Grinding/data_projekt/ModelA/final_2.h5')
+loaded_model_a = load_model('C:/Users/Danie/Desktop/Grinding/dp_git/ModelA/DSR_results/final_retrained_a.h5')
+loaded_model_b = load_model('C:/Users/Danie/Desktop/Grinding/dp_git/ModelA/DSR_results/final_retrained_b.h5')
 
 """
 funkce k testování
@@ -35,8 +36,17 @@ def prepare(img_path):
 """
 výsledný print
 """
+loaded_model_a.predict(prepare('C:/Users/Danie/Desktop/er.jpeg'))
+loaded_model_b.predict(prepare('C:/Users/Danie/Desktop/er.jpeg'))
 
-if loaded_model.predict(prepare('<Zde vlož cestu k obrázku>')) > 0.7:
+#test modelu A
+if loaded_model_a.predict(prepare('C:/Users/Danie/Desktop/280282566_387383293310529_1763940945273802682_n.jpg')) > 0.7:
+    print("it is a turtle")
+else:
+    print("it is not a turtle")
+
+#test modelu B
+if loaded_model_b.predict(prepare('C:/Users/Danie/Desktop/280282566_387383293310529_1763940945273802682_n.jpg')) > 0.7:
     print("it is a turtle")
 else:
     print("it is not a turtle")
