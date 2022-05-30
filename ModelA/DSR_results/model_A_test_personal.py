@@ -34,6 +34,18 @@ def prepare(img_path):
     return np.expand_dims(x, axis=0)
 
 """
+funkce k poslednímu obrázku 
+"""
+
+import os
+os.chdir('C:/Users/Danie/Downloads/')
+result = sorted(filter(os.path.isfile, os.listdir('.')), key=os.path.getmtime, reverse=True)
+x = '\n'.join(map(str, result))
+x = x.partition('\n')[0]
+x = 'C:/Users/Danie/Downloads/'+ x
+print(x)
+
+"""
 výsledný print
 """
 loaded_model_a.predict(prepare('C:/Users/Danie/Desktop/er.jpeg'))
