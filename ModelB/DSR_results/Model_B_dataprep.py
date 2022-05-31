@@ -10,11 +10,12 @@ import pandas as pd
 import cv2
 import os
 import fnmatch
+import shutil
 
 """
 loadování dat
 """
-df_index = pd.read_csv('C:/Users/Danie/Desktop/Grinding/data_projekt/Data/model_B/labels.csv', header=None)
+df_index = pd.read_csv('C:/Users/Danie/Desktop/Grinding/data_projekt/Data/model_B_transform/labels.csv', sep=",", header=None)
 df_index.columns = ['Turtle','left_x','left_y','bwidth','blenght','filename','imwidth','imlenght']
 #což znamená (x,y,)
 print(df_index.head())
@@ -33,7 +34,7 @@ print(df_index.count()) #v tuto chvíli přesně 2000 obrázků
 přidružení YOLO souřadnic k datasetu
 """
 """způsob 1"""
-data_path = 'C:/Users/Danie/Desktop/Grinding/data_projekt/Data/model_B/'
+data_path = 'C:/Users/Danie/Desktop/Grinding/data_projekt/Data/model_B_transform/'
 print(df_index["filename"][0][:-3])
 
 list = []
@@ -45,7 +46,7 @@ print(list)
 
 """způsob 2"""   
 
-labelname = "C:/Users/Danie/Desktop/Grinding/data_projekt/Data/model_B/labels/" + df_index["filename"][0][:-3] + 'txt'
+labelname = "C:/Users/Danie/Desktop/Grinding/data_projekt/Data/model_B_transform/labels/" + df_index["filename"][0][:-3] + 'txt'
 df_yolo = pd.read_csv(labelname, delim_whitespace=True, header=None)
 df_yolo.columns = ['idd', 'yolo_x', 'yolo_y','yolo_width', 'yolo_length']
 print(df_yolo)
